@@ -5,9 +5,9 @@ Executable = get_isbns.sh
 arguments =  $(input_dir) $(output_file)
 Universe   = vanilla
 getenv     = true
-output     = out.out
-error      = err.err
-Log        = log.log
+output     = tmp/out.out
+error      = tmp/err.err
+Log        = tmp/log.log
 transfer_executable = false
 request_memory = 1024
 Queue

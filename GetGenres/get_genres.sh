@@ -1,3 +1,3 @@
 #!/bin/sh
-javac Main.java
-java -classpath . Main $1 >$2
+javac -classpath jsoup-1.7.3.jar:. Main.java
+java -classpath jsoup-1.7.3.jar:. Main $1 >$2
