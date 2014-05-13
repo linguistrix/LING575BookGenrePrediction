@@ -59,7 +59,7 @@ public class Main {
 
         try {
             // Scrape GoodReads using the book's ISBN number (product number in Amazon review corpus).
-            Document doc = Jsoup.connect("https://www.goodreads.com/book/isbn/" + isbn).get();
+            Document doc = Jsoup.connect("https://www.goodreads.com/book/isbn/" + isbn).timeout(0).get();
 
             // Check that the ISBN number leads to a real book page.
             if ((doc.select("div[class=leftContainer exploreBooks]")).size() != 0) {

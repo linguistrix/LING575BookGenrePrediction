@@ -1,4 +1,4 @@
-isbn_list_file = /workspace/ling575_2014/abothale-riamarie/GetGenres/isbn_list.test.txt
+isbn_list_file = /workspace/ling575_2014/abothale-riamarie/GetGenres/isbn_list.txt
 genre_output_file = genres.txt
 
 Executable = get_genres.sh
