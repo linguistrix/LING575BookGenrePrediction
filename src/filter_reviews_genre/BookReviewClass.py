@@ -20,6 +20,7 @@ class BookReview:
             self.time = ''
             self.summary = ''
             self.text = ''
+            self.genre = ''
         elif len(listOfLines) != 10:
             sys.stderr.write('List of review lines must have size exactly equal to 10\n')
         else:
@@ -57,7 +58,8 @@ class BookReview:
                          self.score,
                          self.time,
                          self.summary,
-                         self.text])
+                         self.text,
+                         self.genre])
 
     def __str__(self):
         return self.__repr__()
