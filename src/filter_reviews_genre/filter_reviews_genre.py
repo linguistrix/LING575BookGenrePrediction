@@ -64,7 +64,7 @@ def main():
         pickle_file = open(PICKLED_DIRECTORY_PATH + pickle_file_name, 'r')
         reviews = pickle.load(pickle_file)
         for review in reviews:
-            if review.productID in isbn_genre_dict:
+            if review.productID in isbn_genre_dict and len(review.text) > 100:
                 total_num_reviews += 1
                 review.genre = isbn_genre_dict[review.productID]
                 filtered_reviews_list.append(review)
@@ -75,7 +75,7 @@ def main():
     filtered_pickle_file.close()
 
     # Print data to stderr.
-    sys.stderr.write('Total number of reviews in final pickle = ' + str(total_num_reviews))
+    sys.stderr.write('Total number of reviews in final pickle = ' + str(total_num_reviews) + '\n')
 
 
 if __name__ == '__main__':
