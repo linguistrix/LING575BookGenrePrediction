@@ -5,9 +5,9 @@ import sys, os
 from BookReviewClass import BookReview
 import cPickle as pickle
 
-GENRES_FILE_PATH = '/workspace/ling575_2014/abothale-riamarie/get_genres/genres.txt'
-PICKLED_DIRECTORY_PATH = '/workspace/ling575_2014/abothale-riamarie/filtered_reviews_isbn/pickled/'
-FILTERED_DIRECTORY_PATH = '/workspace/ling575_2014/abothale-riamarie/filtered_reviews_genre/'
+GENRES_FILE_PATH = '/workspace/ling575_2014/abothale-riamarie/data/genres/genres.txt'
+PICKLED_DIRECTORY_PATH = '/workspace/ling575_2014/abothale-riamarie/data/filtered_isbn/pickled/'
+FILTERED_DIRECTORY_PATH = '/workspace/ling575_2014/abothale-riamarie/data/filtered_genres/'
 
 
 def is_number(s):
@@ -27,7 +27,7 @@ def get_filtered_isbn_list():
     infile = open(infile_name, 'r')
     for line in infile:
         if len(line.strip().split()) == 1 and is_number(line.strip()) and len(line.strip()) == 10:
-			isbn_dict[line.strip()] = 1
+            isbn_dict[line.strip()] = 1
     return isbn_dict
 
 
@@ -45,21 +45,24 @@ def debug(isbn_dict):
 
 
 def main():
+
     # Read in a dictionary of ISBN numbers from the genre file.
     isbn_dict = get_filtered_isbn_list()
 
     # Open the pickled files and filter the reviews by the ISBNs stored in isbn_dict.
+    filtered_reviews_list = []
     listing = os.listdir(PICKLED_DIRECTORY_PATH)
     for pickle_file_name in listing:
         pickle_file = open(PICKLED_DIRECTORY_PATH + pickle_file_name, 'r')
-        filtered_pickle_file = open(FILTERED_DIRECTORY_PATH + pickle_file_name, 'w')
         reviews = pickle.load(pickle_file)
-        filtered_reviews_list = []
         for review in reviews:
             if review.productID in isbn_dict:
                 filtered_reviews_list.append(review)
-        pickle.dump(filtered_reviews_list, filtered_pickle_file)
-        filtered_pickle_file.close()
+
+    # Save the filtered reviews into a single pickled file.
+    filtered_pickle_file = open(FILTERED_DIRECTORY_PATH + 'reviews.pickle', 'w')
+    pickle.dump(filtered_reviews_list, filtered_pickle_file)
+    filtered_pickle_file.close()
 
 
 if __name__ == '__main__':
