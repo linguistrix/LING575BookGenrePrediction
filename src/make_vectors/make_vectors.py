@@ -1,6 +1,7 @@
 __author__ = 'Maria Antoniak'
 
-import sys, pickle, nltk
+import sys, pickle
+import re, nltk
 
 OUTPUT_FILE_NAME = '/workspace/ling575_2014/abothale-riamarie/data/mallet/lda_vectors.txt'
 INPUT_FILE_NAME = '/workspace/ling575_2014/abothale-riamarie/data/reviews.pickle'
@@ -14,7 +15,8 @@ def main():
     for review in reviews:
         if i < 1000:
             unique_id = review.productID + review.userID
-            tokens = nltk.word_tokenize(review.text.lower().re.sub(r'[^\w\s]', '', review.text.lower()))
+            text_without_punct = re.sub(r'[^\w\s]', '', review.text.lower())
+            tokens = nltk.word_tokenize(text_without_punct)
             output_file.write(unique_id + ' label ')
             for token in tokens:
                 output_file.write(token + ' ')

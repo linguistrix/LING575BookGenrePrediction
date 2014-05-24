@@ -10,3 +10,11 @@ Steps:
 -- Filter reviews (keep only those that have ISBNs).
 -- Scrape ranked lists of genres from GoodReads for each ISBN.
 -- Filter reviews (keep only those for which we found genres).
+
+
+LDA Mallet Commands
+-------------------
+
+mallet import-file --input lda_vectors.txt --output lda_vectors.mallet --keep-sequence --remove-stopwords
+
+mallet train-topics --input lda_vectors.mallet --num-topics 10
