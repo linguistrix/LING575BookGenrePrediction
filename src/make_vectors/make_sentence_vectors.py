@@ -10,7 +10,7 @@ def main():
     reviews = pickle.load(input_file)
     j = 0
     for review in reviews:
-        unique_id = review.productID + review.userID + j
+        unique_id = review.productID + review.userID + str(j)
         j += 1
         main_genre = review.genre.split()[0].replace(',', '')
         tokens = nltk.word_tokenize(review.text.lower())
