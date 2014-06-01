@@ -11,7 +11,7 @@ def main():
     for review in reviews:
         unique_id = review.productID + review.userID
         main_genre = review.genre.split()[0].replace(',', '')
-        text_without_punct = re.sub(r'[^\w\s]', '', review.text.lower())
+        text_without_punct = re.sub(r'[^\w\s_]', '', review.text.lower())
         tokens = nltk.word_tokenize(text_without_punct)
         output_file.write(unique_id + ' ' + main_genre + ' ')
         for token in tokens:

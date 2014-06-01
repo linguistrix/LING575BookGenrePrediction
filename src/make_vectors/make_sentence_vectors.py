@@ -24,7 +24,7 @@ def main():
                 sentence_vectors.append(unique_id + str(i) + ' ' + main_genre + ' ')
                 i += 1
             else:
-                token = re.sub(r'[^\w\s]', '', token)
+                token = re.sub(r'[^\w\s_]', '', token)
                 if token:
                     sentence_vectors[-1] += token + ' '
 
