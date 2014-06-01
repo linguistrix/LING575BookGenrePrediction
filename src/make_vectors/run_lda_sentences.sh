@@ -1,0 +1,2 @@
+#!/bin/sh
+mallet train-topics --input sentences.train.vectors.mallet --num-topics 20 --optimize-interval 20 --output-topic-keys sentences.topics.20.txt --output-doc-topics sentences.topics.20.composition.txt
