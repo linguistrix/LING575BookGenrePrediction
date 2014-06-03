@@ -12,7 +12,7 @@ def main():
     for review in reviews:
         unique_id = review.productID + '_' + review.userID + '_' + str(j)
         j += 1
-        main_genre = review.genre.split()[0].replace(',', '')
+        main_genre = review.genre.split(',')[0].replace(' ', '-')
         tokens = nltk.word_tokenize(review.text.lower())
         sentence_vectors = []
         i = 0

@@ -14,7 +14,7 @@ def main():
     reviews = pickle.load(input_file)
     for i, review in enumerate(reviews):
         unique_id = review.productID + '_' + review.userID + '_' + str(i)
-        main_genre = review.genre.split(',')[0].replace(' ','-')
+        main_genre = review.genre.split(',')[0].replace(' ', '-')
         text_without_punct = re.sub(r'([^\w\s]|_)', '', review.text.lower())
         tokens = nltk.word_tokenize(text_without_punct)
         output_file.write(unique_id + ' ' + main_genre + ' ')
